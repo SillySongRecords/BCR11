@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browncow Distribution</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> </head>
+<body>
+
+    <main id="login-page" class="page-container">
+        <div class="login-container">
+            <img src="https-placeholder.com/150x50?text=Browncow" alt="Browncow Distribution Logo" class="logo">
+            <h2>Welcome Back</h2>
+            <p>Please enter your details to sign in.</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="user-dashboard" class="dashboard-layout" style="display:none;"> <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="https-placeholder.com/150x50?text=Browncow" alt="Browncow Distribution Logo" class="logo">
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#music" class="active"><i class="fas fa-music"></i> My Music</a></li>
+                <li><a href="#upload"><i class="fas fa-upload"></i> Upload Release</a></li>
+                <li><a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#payouts"><i class="fas fa-wallet"></i> Payouts</a></li>
+                <li><a href="#account"><i class="fas fa-user-circle"></i> Account</a></li>
+                <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="dashboard-content">
+            <section id="music" class="content-section">
+                <div class="section-header">
+                    <h1>My Music</h1>
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> New Release</button>
+                </div>
+                <div class="release-list">
+                    <div class="release-item">
+                        <img src="https-placeholder.com/100x100" alt="Album Art" class="release-art">
+                        <div class="release-info">
+                            <span class="release-title">Cosmic Dream</span>
+                            <span class="release-artist">The Orbiters</span>
+                        </div>
+                        <div class="release-status status-delivered">
+                            <span>Delivered</span>
+                        </div>
+                        <div class="release-actions">
+                            <button class="btn-icon">View Delivery Log</button>
+                            <button class="btn-icon">Edit</button>
+                        </div>
+                    </div>
+                    <div class="release-item">
+                        <img src="https-placeholder.com/100x100" alt="Album Art" class="release-art">
+                        <div class="release-info">
+                            <span class="release-title">Sunset Vibes</span>
+                            <span class="release-artist">DJ Avacado</span>
+                            <div class="rejection-note">
+                                <strong>Admin Note:</strong> Cover art is blurry. Please upload a 3000x3000px version.
+                            </div>
+                        </div>
+                        <div class="release-status status-rejected">
+                            <span>Rejected</span>
+                        </div>
+                        <div class="release-actions">
+                            <button class="btn-icon">Edit & Resubmit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="upload" class="content-section" style="display:none;">
+                <h1>New Release</h1>
+                <form class="upload-form">
+                    <div class="form-card">
+                        <h3>Release Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label>Cover Art (3000x3000px JPG/PNG)</label>
+                                <input type="file" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="release-title">Release Title</label>
+                                <input type="text" id="release-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="artist-name">Artist Name</label>
+                                <input type="text" id="artist-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="release-date">Release Date</label>
+                                <input type="date" id="release-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="original-release-date">Original Release Date (if re-release)</label>
+                                <input type="date" id="original-release-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="upc">UPC/EAN (Optional)</label>
+                                <input type="text" id="upc" placeholder="Leave blank to generate one">
+                            </div>
+                            <div class="form-group">
+                                <label for="track-count">Number of Tracks</label>
+                                <select id="track-count">
+                                    <option value="1">1 (Single)</option>
+                                    <option value="4">4 (EP)</option>
+                                    <option value="10">10 (Album)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-card" id="track-list">
+                        <h3>Track 1</h3>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label>Audio File (WAV/FLAC)</label>
+                                <input type="file" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="track1-title">Track Title</label>
+                                <input type="text" id="track1-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="track1-isrc">ISRC (Optional)</label>
+                                <input type="text" id="track1-isrc" placeholder="Leave blank to generate one">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3>Stores & Platforms</h3>
+                        <div class="dsp-grid">
+                            <label><input type="checkbox" checked> Spotify</label>
+                            <label><input type="checkbox" checked> Apple Music/Shazam</label>
+                            <label><input type="checkbox" checked> YouTube Music</label>
+                            <label><input type="checkbox" checked> Amazon</label>
+                            <label><input type="checkbox" checked> TIDAL</label>
+                            <label><input type="checkbox" checked> TikTok</label>
+                            <label><input type="checkbox" checked> Tencent</label>
+                            <label><input type="checkbox" checked> Boomplay</label>
+                            <label><input type="checkbox" checked> VEVO</label>
+                            <label><input type="checkbox" checked> Soundcloud</label>
+                            <label><input type="checkbox" checked> Anghami</label>
+                            <label class="full-width"><input type="checkbox"> <strong>Deliver to 450+ stores</strong> (Includes all above and more)</label>
+                            <hr>
+                            <label class="rights-management full-width">
+                                <input type="checkbox" id="yt-content-id"> YouTube Content ID
+                                <div class="confirmation-text">You must confirm you own 100% of this audio, with no unlicensed samples or loops.</div>
+                            </label>
+                             <label class="rights-management full-width">
+                                <input type="checkbox" id="fb-rights-manager"> Instagram/Facebook Rights Manager
+                                <div class="confirmation-text">You must confirm you own 100% of this audio.</div>
+                            </label>
+                             <label class="rights-management full-width">
+                                <input type="checkbox" id="tiktok-rights-manager"> TikTok Rights Management
+                                <div class="confirmation-text">You must confirm you own 100% of this audio.</div>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Submit for Review</button>
+                </form>
+            </section>
+
+             <section id="analytics" class="content-section" style="display:none;">
+                 <h1>Analytics</h1>
+                 <div class="placeholder-card">
+                    <h2>Live Analytics Coming Soon</h2>
+                    <p>We are working hard to bring you detailed, real-time analytics. Check back soon!</p>
+                 </div>
+            </section>
+            
+            <section id="payouts" class="content-section" style="display:none;">
+                 <div class="section-header">
+                    <h1>Payouts</h1>
+                </div>
+                <div class="payout-summary">
+                    <div class="balance-card">
+                        <span>Current Balance</span>
+                        <div class="balance-amount">$1,234.56</div>
+                    </div>
+                    <div class="payout-action">
+                        <button class="btn btn-primary" id="request-payout-btn">Request Payout</button>
+                        <small>Next payout date: Oct 15, 2025</small>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <h3>Payout Method</h3>
+                    <p>Select your preferred method for receiving royalties.</p>
+                    <form id="payout-method-form">
+                        <div class="form-group">
+                            <label for="payout-method">Method</label>
+                            <select id="payout-method">
+                                <option value="paypal">PayPal</option>
+                                <option value="check">Paper Check</option>
+                            </select>
+                        </div>
+                         <div class="form-group" id="paypal-email-group">
+                            <label for="paypal-email">PayPal Email</label>
+                            <input type="email" id="paypal-email" value="user@example.com">
+                        </div>
+                        <div id="paper-check-group" style="display:none;">
+                            <div class="form-group">
+                                <label for="mailing-address">Mailing Address</label>
+                                <textarea id="mailing-address" rows="4">123 Music Lane&#10;Nashville, TN 37203&#10;USA</textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Save Payout Info</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Payout & Royalty History</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th class="text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-09-01</td>
+                                <td>Royalty Report - August 2025</td>
+                                <td class="text-right success-text">+$450.12</td>
+                            </tr>
+                            <tr>
+                                <td>2025-08-15</td>
+                                <td>Payout Request (Completed)</td>
+                                <td class="text-right error-text">-$800.00</td>
+                            </tr>
+                            <tr>
+                                <td>2025-08-01</td>
+                                <td>Royalty Report - July 2025</td>
+                                <td class="text-right success-text">+$350.44</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="admin-dashboard" class="dashboard-layout" style="display:none;"> <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="https-placeholder.com/150x50?text=Browncow" alt="Browncow Distribution Logo" class="logo">
+                <span class="admin-badge">Admin</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#approvals" class="active"><i class="fas fa-check-double"></i> Approvals</a></li>
+                <li><a href="#users"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#catalog"><i class="fas fa-compact-disc"></i> Full Catalog</a></li>
+                <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="dashboard-content">
+            <section id="approvals" class="content-section">
+                <div class="section-header">
+                    <h1>Release Approval Queue</h1>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Artist</th>
+                                <th>Release Title</th>
+                                <th>Submitted By</th>
+                                <th>Date Submitted</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>The Orbiters</td>
+                                <td>Galactic Echoes</td>
+                                <td>user@example.com</td>
+                                <td>2025-09-03</td>
+                                <td><button class="btn btn-small">Review</button></td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="users" class="content-section" style="display:none;">
+                <div class="section-header">
+                    <h1>User Management</h1>
+                    <input type="search" placeholder="Search users by name or email...">
+                </div>
+                <div class="table-container">
+                    <table>
+                         <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Payout Method</th>
+                                <th class="text-right">Balance</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jane Doe</td>
+                                <td>jane.doe@email.com</td>
+                                <td>PayPal</td>
+                                <td class="text-right">$1,234.56</td>
+                                <td>
+                                    <button class="btn-icon">Manage</button>
+                                    <button class="btn-icon btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>John Smith</td>
+                                <td>john.smith@email.com</td>
+                                <td>Paper Check</td>
+                                <td class="text-right">$88.20</td>
+                                <td>
+                                    <button class="btn-icon">Manage</button>
+                                    <button class="btn-icon btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <div id="review-modal" class="modal-backdrop" style="display:none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Review: Galactic Echoes</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="review-content">
+                        <img src="https-placeholder.com/200x200" alt="Album Art">
+                        <div class="metadata">
+                            <p><strong>Artist:</strong> The Orbiters</p>
+                            <p><strong>UPC:</strong> 123456789012</p>
+                            <p><strong>Release Date:</strong> 2025-10-24</p>
+                            <hr>
+                            <h4>Track 1: Starlight</h4>
+                            <p><strong>ISRC:</strong> US-ABC-12-34567</p>
+                            <audio controls src="audio-placeholder.mp3"></audio> </div>
+                    </div>
+                    <div id="rejection-form" style="display:none;">
+                        <label for="rejection-reason">Reason for Rejection</label>
+                        <textarea id="rejection-reason" rows="3" placeholder="e.g., Audio file is clipping, cover art resolution too low..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" id="reject-btn">Reject</button>
+                    <button class="btn btn-success" id="approve-btn">Approve</button>
+                    <button class="btn btn-primary" id="confirm-rejection-btn" style="display:none;">Send Rejection</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="user-manage-modal" class="modal-backdrop" style="display:none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Manage User: Jane Doe</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h4>User Information</h4>
+                    <h4>Balance & Payouts</h4>
+                    <p>Current Balance: <strong>$1,234.56</strong></p>
+                    <div class="balance-management">
+                        <input type="number" placeholder="Amount">
+                        <input type="text" placeholder="Reason (e.g., Manual Correction)">
+                        <button class="btn btn-small btn-success">Add</button>
+                        <button class="btn btn-small btn-danger">Subtract</button>
+                    </div>
+
+                    <h4>Releases</h4>
+                    <div class="release-item">
+                        <span>Cosmic Dream</span>
+                        <div>
+                            <select>
+                                <option>In Review</option>
+                                <option>Approved</option>
+                                <option selected>Delivered</option>
+                                <option>Rejected</option>
+                            </select>
+                            <button class="btn-icon">Edit Metadata</button>
+                            <button class="btn-icon">Manage Deliveries</button>
+                            <button class="btn-icon btn-danger">Delete</button>
+                        </div>
+                    </div>
+                    <button class="btn">Add Release (Bypass Uploads)</button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>
